@@ -1,0 +1,110 @@
+CREATE TABLE IF NOT EXISTS Categories (
+        category_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        name NVARCHAR(30) NOT NULL UNIQUE
+);
+
+INSERT INTO Categories (name) VALUES ('grocery');
+INSERT INTO Categories (name) VALUES ('produce');
+INSERT INTO Categories (name) VALUES ('medicine');
+INSERT INTO Categories (name) VALUES ('housecleaning');
+INSERT INTO Categories (name) VALUES ('hygiene');
+
+CREATE TABLE IF NOT EXISTS Ingredients (
+        ingredient_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        type NVARCHAR(30) NOT NULL,
+        name NVARCHAR(90)
+);
+
+INSERT INTO Ingredients (type) VALUES 
+        ('milk');
+
+INSERT INTO Ingredients (type) VALUES 
+        ('egg');
+
+INSERT INTO Ingredients (type) VALUES 
+        ('vinegar');
+
+INSERT INTO Ingredients (type) VALUES 
+        ('ketchup');
+
+INSERT INTO ingredients (type) VALUES 
+        ('a1 sauce');
+
+CREATE TABLE IF NOT EXISTS Products (
+        product_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        category NVARCHAR(30) NOT NULL REFERENCES Categories(name),
+        ingredient NVARCHAR NOT NULL REFERENCES Ingredients(type),
+        brand NVARCHAR(100) NOT NULL,
+        name NVARCHAR(100) NOT NULL,
+        amount REAL,
+        unit NVARCHAR(30),
+        desc NVARCHAR(100),
+        desc2 NVARCHAR(100)
+);
+
+INSERT INTO Products (category, brand, name, amount, unit,
+                      ingredient, desc) VALUES 
+  ('grocery', 'Kong Yen', 'rice vinegar', 20.2, 'FL OZ',
+   'vinegar', '600 ml');
+
+INSERT INTO Products (brand, name, amount, unit, category,
+                      ingredient, desc, desc2) VALUES 
+  ('Kraft', 'A1 sauce', 15.0, 'OZ', 'grocery',
+   'a1 sauce', 'A1 sauce original', '425 g');
+
+INSERT INTO Products (brand, name, category, 
+                      amount, unit, ingredient) VALUES 
+  ('Heinz', 'Twin Pack Organic Tomato Ketchup', 'grocery',
+   88.0, 'OZ', 'ketchup');
+
+INSERT INTO Products (brand, name, category, 
+                      amount, unit, ingredient) VALUES 
+  ('Clover', 'Organic 2% Reduced Fat Milk', 'grocery',
+   1, 'gallon', 'milk');
+
+CREATE TABLE IF NOT EXISTS Barcodes (
+        barcode_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        product_id INTEGER REFERENCES Products(product_id),
+        type NVARCHAR(20),
+        value NVARCHAR(30) NOT NULL
+);
+
+INSERT INTO Barcodes (product_id, type, value) VALUES
+  (1, 'EAN13', '4710046011101');
+
+INSERT INTO Barcodes (product_id, type, value) VALUES
+  (2, 'UPC',   '054400000047');
+
+INSERT INTO Barcodes (product_id, type, value) VALUES
+  (3, 'UPC',   '013000307444');
+
+INSERT INTO Barcodes (product_id, type, value) VALUES
+  (4, 'UPC',   '070852999213');
+
+CREATE TABLE IF NOT EXISTS PLUs (
+        plu_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        product_id INTEGER REFERENCES Products(product_id),
+        type NVARCHAR(20) NOT NULL,
+        value NVARCHAR(30) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Images (
+        image_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        product_id INTEGER REFERENCES Products(product_id),
+        type NVARCHAR(20) NOT NULL,
+        data BLOB
+);
+
+CREATE TABLE IF NOT EXISTS Locations (
+        location_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        desc NVARCHAR(100)
+);
+
+CREATE TABLE IF NOT EXISTS Inventory (
+        inventory_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        product_id INTEGER REFERENCES Products(product_id),
+        location_id INTEGER REFERENCES Locations(location_id),
+        household_id INTEGER REFERENCES Households(household_id),
+        quantity INTEGER,
+        expiration_date TEXT
+);

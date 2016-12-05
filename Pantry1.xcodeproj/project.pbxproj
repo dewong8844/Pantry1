@@ -8,20 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		8714CEE71DEA57BF009426FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8714CEE61DEA57BF009426FA /* AppDelegate.swift */; };
-		8714CEE91DEA57BF009426FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8714CEE81DEA57BF009426FA /* ViewController.swift */; };
+		8714CEE91DEA57BF009426FA /* PantryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8714CEE81DEA57BF009426FA /* PantryViewController.swift */; };
 		8714CEEC1DEA57BF009426FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8714CEEA1DEA57BF009426FA /* Main.storyboard */; };
 		8714CEEE1DEA57BF009426FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8714CEED1DEA57BF009426FA /* Assets.xcassets */; };
 		8714CEF11DEA57BF009426FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8714CEEF1DEA57BF009426FA /* LaunchScreen.storyboard */; };
+		872F5E941DF21B36009D641D /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872F5E931DF21B36009D641D /* Product.swift */; };
+		872F5E981DF29260009D641D /* ProductTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872F5E971DF29260009D641D /* ProductTableViewController.swift */; };
+		872F5E9A1DF4892D009D641D /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872F5E991DF4892D009D641D /* Inventory.swift */; };
+		872F5E9E1DF4BB9D009D641D /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872F5E9D1DF4BB9D009D641D /* ProductViewController.swift */; };
+		872F5EC51DF52801009D641D /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872F5EC41DF52801009D641D /* ProductTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8714CEE31DEA57BF009426FA /* Pantry1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pantry1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8714CEE61DEA57BF009426FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8714CEE81DEA57BF009426FA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8714CEE81DEA57BF009426FA /* PantryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryViewController.swift; sourceTree = "<group>"; };
 		8714CEEB1DEA57BF009426FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8714CEED1DEA57BF009426FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8714CEF01DEA57BF009426FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8714CEF21DEA57BF009426FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		872F5E931DF21B36009D641D /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		872F5E971DF29260009D641D /* ProductTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewController.swift; sourceTree = "<group>"; };
+		872F5E991DF4892D009D641D /* Inventory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
+		872F5E9D1DF4BB9D009D641D /* ProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
+		872F5EC41DF52801009D641D /* ProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +64,27 @@
 		8714CEE51DEA57BF009426FA /* Pantry1 */ = {
 			isa = PBXGroup;
 			children = (
+				879DDB991DF10853003649A9 /* Model */,
 				8714CEE61DEA57BF009426FA /* AppDelegate.swift */,
-				8714CEE81DEA57BF009426FA /* ViewController.swift */,
+				8714CEE81DEA57BF009426FA /* PantryViewController.swift */,
+				872F5EC41DF52801009D641D /* ProductTableViewCell.swift */,
+				872F5E971DF29260009D641D /* ProductTableViewController.swift */,
+				872F5E9D1DF4BB9D009D641D /* ProductViewController.swift */,
 				8714CEEA1DEA57BF009426FA /* Main.storyboard */,
 				8714CEED1DEA57BF009426FA /* Assets.xcassets */,
 				8714CEEF1DEA57BF009426FA /* LaunchScreen.storyboard */,
 				8714CEF21DEA57BF009426FA /* Info.plist */,
 			);
 			path = Pantry1;
+			sourceTree = "<group>";
+		};
+		879DDB991DF10853003649A9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				872F5E931DF21B36009D641D /* Product.swift */,
+				872F5E991DF4892D009D641D /* Inventory.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -97,6 +120,7 @@
 					8714CEE21DEA57BF009426FA = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = E2L575L59J;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -137,8 +161,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8714CEE91DEA57BF009426FA /* ViewController.swift in Sources */,
+				872F5E9A1DF4892D009D641D /* Inventory.swift in Sources */,
+				8714CEE91DEA57BF009426FA /* PantryViewController.swift in Sources */,
+				872F5EC51DF52801009D641D /* ProductTableViewCell.swift in Sources */,
+				872F5E941DF21B36009D641D /* Product.swift in Sources */,
+				872F5E9E1DF4BB9D009D641D /* ProductViewController.swift in Sources */,
 				8714CEE71DEA57BF009426FA /* AppDelegate.swift in Sources */,
+				872F5E981DF29260009D641D /* ProductTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,11 +288,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = E2L575L59J;
 				INFOPLIST_FILE = Pantry1/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.me.Pantry1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -272,8 +304,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = E2L575L59J;
 				INFOPLIST_FILE = Pantry1/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.me.Pantry1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -300,6 +334,7 @@
 				8714CEF71DEA57C0009426FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

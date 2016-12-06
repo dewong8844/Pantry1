@@ -19,13 +19,18 @@ class ProductTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Load the sample data.
-        loadSampleProducts()
+        if let savedProducts = Product.loadProductsFromDB() {
+            products += savedProducts
+        }
+        else {
+            loadSampleProducts()
+        }
     }
 
     func loadSampleProducts() {
-        let product1 = Product(brand: "Kong Yen", name: "rice vinegar", amount: 20.2, unit: "FL OZ", ingredient: "vinegar", category: "grocery")
-        let product2 = Product(brand: "Kraft", name: "A1 sauce", amount: 15.0, unit: "OZ", ingredient: "A1 sauce", category: "grocery")
-        let product3 = Product(brand: "Heinz", name: "Twin Pack Organic Tomato Ketchup", amount: 88.0, unit: "OZ", ingredient: "ketchup", category: "grocery")
+        let product1 = Product(brand: "Advil", name: "Ibuprofen Tablets 200mg", amount: 360, unit: "tablet", ingredient: "ibuprofen", category: "medicine")
+        let product2 = Product(brand: "McNeil", name: "Benadryl Allergy", amount: 24, unit: "tablet", ingredient: "benadryl", category: "medicine")
+        let product3 = Product(brand: "Motrin IB", name: "Ibuprofen Tablets 200mg", amount: 100, unit: "tablets", ingredient: "ibuprofen", category: "medicine")
         
         products += [product1, product2, product3]
         
@@ -75,6 +80,8 @@ class ProductTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            let product = products[indexPath.row]
+            product.removeFromDB()
             products.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
@@ -134,8 +141,8 @@ class ProductTableViewController: UITableViewController {
                 tableView.insertRows(at: [newIndexPath], with: .bottom)
             }
             
-            // Save the products
-            // saveProducts()
+            // Save the product
+            product.saveToDB()
         }
     }
 

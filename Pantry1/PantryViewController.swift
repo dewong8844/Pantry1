@@ -12,7 +12,9 @@ class PantryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        // Initialize the pantry DB
+        Pantry.initDB()
     }
 
     override func didReceiveMemoryWarning() {

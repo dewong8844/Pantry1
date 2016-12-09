@@ -71,9 +71,9 @@ class Product {
     }
     
     
-    func findProductByNameInDB(brand:String, name:String, amount:Float) -> Product? {
+    static func findProductIdByName(brand:String, name:String, amount:Float) -> Int {
         let pantryDB = FMDatabase(path: Pantry.databasePath as String)
-        var product: Product?
+        var productId: Int?
         
         if (pantryDB?.open())! {
             let querySQL = "SELECT * FROM products WHERE brand = '\(brand)' AND name = '\(name)' AND amount = \(String(amount))"
@@ -81,6 +81,31 @@ class Product {
             if results?.next() == true {
                 print("Record found")
                 print(results?.resultDictionary() as Any)
+                let id = (results?.string(forColumn: "product_id"))!
+                productId = Int(id)
+            }
+            else {
+                print("Record not found")
+                productId = 0
+            }
+            pantryDB?.close()
+        }
+        else {
+            print ("Error \(pantryDB?.lastErrorMessage())")
+        }
+        
+        return productId!
+    }
+    
+    static func findProductById(id: Int) -> Product? {
+        let pantryDB = FMDatabase(path: Pantry.databasePath as String)
+        var product: Product?
+        
+        if (pantryDB?.open())! {
+            let querySQL = "SELECT * FROM products WHERE product_id = \(id)"
+            let results:FMResultSet? = pantryDB?.executeQuery(querySQL, withArgumentsIn: nil)
+            if results?.next() == true {
+                print("Record found")
                 print(results?.resultDictionary() as Any)
                 let brand = (results?.string(forColumn: "brand"))!
                 let name = (results?.string(forColumn: "name"))!
@@ -89,9 +114,10 @@ class Product {
                 let category = (results?.string(forColumn: "category"))!
                 let ingredient = (results?.string(forColumn: "ingredient"))!
                 product = Product(brand: brand, name: name, amount: Float(amount)!, unit: unit, ingredient: ingredient, category: category)
+
             }
             else {
-                print("Record not found")
+                print ("Error \(pantryDB?.lastErrorMessage())")
                 product = nil
             }
             pantryDB?.close()
@@ -100,9 +126,9 @@ class Product {
             print ("Error \(pantryDB?.lastErrorMessage())")
         }
         
-        return product
-        
+        return product        
     }
+
     
     func removeFromDB() {
         let pantryDB = FMDatabase(path: Pantry.databasePath as String)

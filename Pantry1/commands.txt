@@ -97,14 +97,18 @@ CREATE TABLE IF NOT EXISTS Images (
 
 CREATE TABLE IF NOT EXISTS Locations (
         location_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-        desc NVARCHAR(100)
+        desc NVARCHAR(40)
 );
+
+INSERT INTO Locations (desc) VALUES ('kitchen');
+INSERT INTO Locations (desc) VALUES ('pantry');
+INSERT INTO Locations (desc) VALUES ('cupboard');
+INSERT INTO Locations (desc) VALUES ('medicine cabinet');
 
 CREATE TABLE IF NOT EXISTS Inventory (
         inventory_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
         product_id INTEGER REFERENCES Products(product_id),
-        location_id INTEGER REFERENCES Locations(location_id),
-        household_id INTEGER REFERENCES Households(household_id),
+        location NVARCHAR(40) REFERENCES Locations(desc),
         quantity INTEGER,
         expiration_date TEXT
 );

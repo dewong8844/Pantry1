@@ -190,7 +190,7 @@ class Product {
         if (pantryDB?.open())! {
             let sql_stmt = "CREATE TABLE IF NOT EXISTS Products (product_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,  " + "category NVARCHAR(30) NOT NULL REFERENCES Categories(name), ingredient NVARCHAR(30) NOT NULL REFERENCES"
                 + "Ingredients(type), brand NVARCHAR(100) NOT NULL, name NVARCHAR(100) NOT NULL, amount REAL, "
-                + "unit NVARCHAR(30), desc NVARCHAR(100), desc2 NVARCHAR(100)"
+                + "unit NVARCHAR(30), desc NVARCHAR(100), desc2 NVARCHAR(100))"
             if !(pantryDB?.executeStatements(sql_stmt))! {
                 print ("Error \(pantryDB?.lastErrorMessage())")
                 // status.text = "Create products table failed"

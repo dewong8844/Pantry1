@@ -29,6 +29,7 @@
 		872F5EE31DF7C4AD009D641D /* InventoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872F5EE21DF7C4AD009D641D /* InventoryTableViewController.swift */; };
 		872F5EE51DF7E6C6009D641D /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872F5EE41DF7E6C6009D641D /* InventoryViewController.swift */; };
 		872F5EE81DFA6E54009D641D /* Barcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872F5EE71DFA6E54009D641D /* Barcode.swift */; };
+		872F5EEA1DFA8F65009D641D /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872F5EE91DFA8F65009D641D /* ScanViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		872F5EE21DF7C4AD009D641D /* InventoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryTableViewController.swift; sourceTree = "<group>"; };
 		872F5EE41DF7E6C6009D641D /* InventoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		872F5EE71DFA6E54009D641D /* Barcode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Barcode.swift; sourceTree = "<group>"; };
+		872F5EE91DFA8F65009D641D /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				872F5EE61DFA6DC5009D641D /* InventoryViewController */,
 				8714CEE61DEA57BF009426FA /* AppDelegate.swift */,
 				8714CEE81DEA57BF009426FA /* PantryViewController.swift */,
+				872F5EE91DFA8F65009D641D /* ScanViewController.swift */,
 				8714CEEA1DEA57BF009426FA /* Main.storyboard */,
 				872F5EC81DF534E6009D641D /* Pantry1-Bridging-Header.h */,
 				8714CEED1DEA57BF009426FA /* Assets.xcassets */,
@@ -262,6 +265,7 @@
 				872F5E981DF29260009D641D /* ProductTableViewController.swift in Sources */,
 				872F5ED51DF534E7009D641D /* FMDatabaseAdditions.m in Sources */,
 				872F5EE81DFA6E54009D641D /* Barcode.swift in Sources */,
+				872F5EEA1DFA8F65009D641D /* ScanViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

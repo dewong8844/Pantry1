@@ -130,15 +130,15 @@ class Inventory {
         return inventoryList
     }
     
-    // TODO: cannot create just products table,
-    //       need to create ingredients and categories first, how to do this?
+    // TODO: cannot create just inventory table,
+    //       need to create products and locations first, how to do this?
     static func createInventoryDB() {
         let pantryDB = FMDatabase(path: Pantry.databasePath as String)
         if (pantryDB?.open())! {
-            let sql_stmt = "CREATE TABLE IF NOT EXISTS Inventory (inventory_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,  product_id INTEGER REFERENCES Product(product_id), location NVARCHAR(100) REFERENCES Location(location_id), quantity INTEGER NOT NULL, expiration_date TEXT"
+            let sql_stmt = "CREATE TABLE IF NOT EXISTS Inventory (inventory_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,  product_id INTEGER REFERENCES Product(product_id), location NVARCHAR(100) REFERENCES Location(location_id), quantity INTEGER NOT NULL, expiration_date TEXT)"
             if !(pantryDB?.executeStatements(sql_stmt))! {
                 print ("Error \(pantryDB?.lastErrorMessage())")
-                // status.text = "Create products table failed"
+                // status.text = "Create inventory table failed"
             }
             pantryDB?.close()
         }

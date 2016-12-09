@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS Categories (
 
 INSERT INTO Categories (name) VALUES ('grocery');
 INSERT INTO Categories (name) VALUES ('produce');
-INSERT INTO Categories (name) VALUES ('medicine');
+INSERT INTO Categories (name) VALUES ('drug');
 INSERT INTO Categories (name) VALUES ('housecleaning');
 INSERT INTO Categories (name) VALUES ('hygiene');
 
@@ -29,6 +29,9 @@ INSERT INTO Ingredients (type) VALUES
 
 INSERT INTO ingredients (type) VALUES 
         ('a1 sauce');
+
+INSERT INTO ingredients (type) VALUES 
+        ('ibuprofen');
 
 CREATE TABLE IF NOT EXISTS Products (
         product_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -62,6 +65,11 @@ INSERT INTO Products (brand, name, category,
   ('Clover', 'Organic 2% Reduced Fat Milk', 'grocery',
    1, 'gallon', 'milk');
 
+INSERT INTO Products (brand, name, category, 
+                      amount, unit, ingredient) VALUES 
+  ('Advil', 'Ibuprofen 200mg', 'drug',
+   360, 'tablet', 'ibuprofen');
+
 CREATE TABLE IF NOT EXISTS Barcodes (
         barcode_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
         product_id INTEGER REFERENCES Products(product_id),
@@ -80,6 +88,9 @@ INSERT INTO Barcodes (product_id, type, value) VALUES
 
 INSERT INTO Barcodes (product_id, type, value) VALUES
   (4, 'UPC',   '070852999213');
+
+INSERT INTO Barcodes (product_id, type, value) VALUES
+  (5, 'UPC',   '305730154604');
 
 CREATE TABLE IF NOT EXISTS PLUs (
         plu_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,

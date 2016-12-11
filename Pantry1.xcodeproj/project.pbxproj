@@ -30,6 +30,8 @@
 		872F5EE51DF7E6C6009D641D /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872F5EE41DF7E6C6009D641D /* InventoryViewController.swift */; };
 		872F5EE81DFA6E54009D641D /* Barcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872F5EE71DFA6E54009D641D /* Barcode.swift */; };
 		872F5EEA1DFA8F65009D641D /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872F5EE91DFA8F65009D641D /* ScanViewController.swift */; };
+		873155A71DFD05FA0063997E /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873155A61DFD05FA0063997E /* AddItemViewController.swift */; };
+		873155A91DFD064E0063997E /* AddProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873155A81DFD064E0063997E /* AddProductViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +67,8 @@
 		872F5EE41DF7E6C6009D641D /* InventoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		872F5EE71DFA6E54009D641D /* Barcode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Barcode.swift; sourceTree = "<group>"; };
 		872F5EE91DFA8F65009D641D /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
+		873155A61DFD05FA0063997E /* AddItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		873155A81DFD064E0063997E /* AddProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProductViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,9 +107,9 @@
 				879DDB991DF10853003649A9 /* Model */,
 				872F5EDF1DF79343009D641D /* ProductViewController */,
 				872F5EE61DFA6DC5009D641D /* InventoryViewController */,
+				873155AA1DFD0D6B0063997E /* ScanViewController */,
 				8714CEE61DEA57BF009426FA /* AppDelegate.swift */,
 				8714CEE81DEA57BF009426FA /* PantryViewController.swift */,
-				872F5EE91DFA8F65009D641D /* ScanViewController.swift */,
 				8714CEEA1DEA57BF009426FA /* Main.storyboard */,
 				872F5EC81DF534E6009D641D /* Pantry1-Bridging-Header.h */,
 				8714CEED1DEA57BF009426FA /* Assets.xcassets */,
@@ -159,6 +163,16 @@
 				872F5EE41DF7E6C6009D641D /* InventoryViewController.swift */,
 			);
 			name = InventoryViewController;
+			sourceTree = "<group>";
+		};
+		873155AA1DFD0D6B0063997E /* ScanViewController */ = {
+			isa = PBXGroup;
+			children = (
+				872F5EE91DFA8F65009D641D /* ScanViewController.swift */,
+				873155A81DFD064E0063997E /* AddProductViewController.swift */,
+				873155A61DFD05FA0063997E /* AddItemViewController.swift */,
+			);
+			name = ScanViewController;
 			sourceTree = "<group>";
 		};
 		879DDB991DF10853003649A9 /* Model */ = {
@@ -250,6 +264,7 @@
 			files = (
 				872F5E9A1DF4892D009D641D /* Inventory.swift in Sources */,
 				8714CEE91DEA57BF009426FA /* PantryViewController.swift in Sources */,
+				873155A91DFD064E0063997E /* AddProductViewController.swift in Sources */,
 				872F5EC51DF52801009D641D /* ProductTableViewCell.swift in Sources */,
 				872F5ED41DF534E7009D641D /* FMDatabase.m in Sources */,
 				872F5EE11DF7BE85009D641D /* InventoryTableViewCell.swift in Sources */,
@@ -262,6 +277,7 @@
 				872F5EC71DF5318B009D641D /* Pantry.swift in Sources */,
 				872F5EE31DF7C4AD009D641D /* InventoryTableViewController.swift in Sources */,
 				8714CEE71DEA57BF009426FA /* AppDelegate.swift in Sources */,
+				873155A71DFD05FA0063997E /* AddItemViewController.swift in Sources */,
 				872F5E981DF29260009D641D /* ProductTableViewController.swift in Sources */,
 				872F5ED51DF534E7009D641D /* FMDatabaseAdditions.m in Sources */,
 				872F5EE81DFA6E54009D641D /* Barcode.swift in Sources */,

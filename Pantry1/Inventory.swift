@@ -87,6 +87,39 @@ class Inventory {
         }
     }
     
+    static func findItemByProductId(productId: Int) -> Inventory? {
+        let pantryDB = FMDatabase(path: Pantry.databasePath as String)
+        var item: Inventory?
+        
+        if (pantryDB?.open())! {
+            let querySQL = "SELECT * FROM inventory WHERE product_id = \(productId)"
+            let results:FMResultSet? = pantryDB?.executeQuery(querySQL, withArgumentsIn: nil)
+            if results?.next() == true {
+                print("Record found")
+                print(results?.resultDictionary() as Any)
+                let product = Product.findProductById(id: productId)
+                if product != nil {
+                    let brand = product?.brand
+                    let name = product?.name
+                    let amount = product?.amount
+                    let location = (results?.string(forColumn: "location"))!
+                    let quantity = (results?.string(forColumn: "quantity"))!
+                    item = Inventory(brand: brand!, name: name!, amount: Float(amount!), location: location, quantity: Int(quantity)!)
+                }
+                
+            }
+            else {
+                print ("Error \(pantryDB?.lastErrorMessage())")
+                item = nil
+            }
+            pantryDB?.close()
+        }
+        else {
+            print ("Error \(pantryDB?.lastErrorMessage())")
+        }
+        
+        return item
+    }
     
     static func loadInventoryFromDB() -> [Inventory]? {
         let pantryDB = FMDatabase(path: Pantry.databasePath as String)

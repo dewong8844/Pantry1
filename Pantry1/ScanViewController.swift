@@ -33,6 +33,9 @@ class ScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
                               AVMetadataObjectTypePDF417Code,
                               AVMetadataObjectTypeQRCode]
 
+    /* scanned barcode and product id values */
+    var barcodeValue: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -127,18 +130,19 @@ class ScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
         // EAN or UPC?
         // Check for added "0" at beginning of code.
         let trimmedCodeString = "\(trimmedCode)"
-        var trimmedCodeNoZero: String
         
         if trimmedCodeString.hasPrefix("0") && trimmedCodeString.characters.count > 1 {
-            trimmedCodeNoZero = String(trimmedCodeString.characters.dropFirst())
+            barcodeValue = String(trimmedCodeString.characters.dropFirst())
         } else {
-            trimmedCodeNoZero = trimmedCodeString
+            barcodeValue = trimmedCodeString
         }
 
         // search the barcode in DB
-        let productId = Barcode.findProductIdByBarcode(value: trimmedCodeNoZero)
+        let productId = Barcode.findProductIdByBarcode(value: barcodeValue!)
         let product = Product.findProductById(id: productId)
         var alertMessage: String? = nil
+        var alertTitle: String? = nil
+        var okAction = UIAlertAction()
         
         if product != nil {
             let brand = product?.brand
@@ -147,21 +151,37 @@ class ScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
             
             // Product found, need to add the product to inventory
             alertMessage = (brand! + " " + name!)
+            alertTitle = "Found a Product!"
+            okAction = UIAlertAction(title: "Update Inventory", style: .default, handler: { action in
+                self.performSegue(withIdentifier: "ScanAddItem", sender: self)
+            })
         }
         else {
             // Product NOT found, add new product if desired
-            alertMessage = trimmedCodeNoZero
+            alertMessage = barcodeValue
+            alertTitle = "Found a Barcode!"
+            okAction = UIAlertAction(title: "Add New Product", style: .default, handler: { action in
+                self.performSegue(withIdentifier: "ScanAddProduct", sender: self)
+            })
         }
         
-        let alert = UIAlertController(title: "Found a Barcode!", message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Search", style: UIAlertActionStyle.destructive, handler: { action in
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: { action in
             
             // TODO: understand what this line is for
-            self.navigationController?.popViewController(animated: true)
-        }))
+            guard self.navigationController?.popViewController(animated: true) != nil
+                else {
+                    print("No navigation controller")
+                    return;
+                }
+        })
+        
+        // Add the actions
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
         
         self.present(alert, animated: true, completion: nil)
-        messageLabel.text = trimmedCodeNoZero
+        messageLabel.text = barcodeValue
         
         // Vibrate the device to give the user some feedback.
         AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
@@ -175,8 +195,16 @@ class ScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let productId = Barcode.findProductIdByBarcode(value: barcodeValue!)
+        let barcode = Barcode(barcode: barcodeValue!, type: "", productId: productId)
+        if segue.identifier == "ScanAddItem" {
+            let nextViewController = segue.destination as! AddItemViewController
+            nextViewController.barcode = barcode
+        }
+        else {
+            let nextViewController = segue.destination as! AddProductViewController
+            nextViewController.barcode = barcode
+        }
     }
     
 

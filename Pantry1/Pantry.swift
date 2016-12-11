@@ -34,34 +34,14 @@ class Pantry {
                 print(error)
             }
             
-            let contactDB = FMDatabase(path: databasePath as String)
-            if contactDB == nil {
-                print ("Error \(contactDB?.lastErrorMessage())")
-                // status.text = "New fmdb failed"
+            let pantryDB = FMDatabase(path: databasePath as String)
+            if pantryDB == nil {
+                print ("Error \(pantryDB?.lastErrorMessage())")
             }
-/*
-            if (contactDB?.open())! {
-                let sql_stmt = "CREATE TABLE IF NOT EXISTS products (ID INTEGER PRIMARY KEY AUTOINCREMENT, brand TEXT, name TEXT, amount REAL"
-                if !(contactDB?.executeStatements(sql_stmt))! {
-                    print ("Error \(contactDB?.lastErrorMessage())")
-                    // status.text = "Create products table failed"
-                }
-                contactDB?.close()
-            }
-            else {
-                print ("Error \(contactDB?.lastErrorMessage())")
-                // status.text = "Open pantry.db failed"
-            }
- */
         }
         else {
             print ("pantry.db found and ready to go")
-            // status.text = "Contact DB is ready to use"
         }
-        
-        // name.returnKeyType = .done
-        // address.returnKeyType = .done
-        // phone.returnKeyType = .done
         
     }
 }
